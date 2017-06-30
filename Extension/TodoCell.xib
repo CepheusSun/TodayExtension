@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodoCell" id="KGk-i7-Jjw" customClass="TodoCell" customModule="Extension" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OE6-gv-bvg">
+                        <rect key="frame" x="2" y="2" width="39.5" height="39.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="OE6-gv-bvg" secondAttribute="height" multiplier="1:1" id="DAs-vL-7KJ"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qks-nI-YCg">
+                        <rect key="frame" x="51.5" y="11" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="qks-nI-YCg" firstAttribute="centerY" secondItem="OE6-gv-bvg" secondAttribute="centerY" id="1O1-09-RwK"/>
+                    <constraint firstAttribute="bottom" secondItem="OE6-gv-bvg" secondAttribute="bottom" constant="2" id="PwQ-Mj-5HA"/>
+                    <constraint firstItem="qks-nI-YCg" firstAttribute="leading" secondItem="OE6-gv-bvg" secondAttribute="trailing" constant="10" id="U2n-Jp-2CX"/>
+                    <constraint firstItem="OE6-gv-bvg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="2" id="l7p-bH-ZaW"/>
+                    <constraint firstItem="OE6-gv-bvg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="vme-TG-TXt"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="headerImageView" destination="OE6-gv-bvg" id="Yk6-xS-JX8"/>
+                <outlet property="titleLabel" destination="qks-nI-YCg" id="bb1-IF-fNk"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

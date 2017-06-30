@@ -25,11 +25,8 @@ class ViewController: UIViewController {
         return arr as! [String]
     }()
     
-    fileprivate let identifier = "tableviewidentifier"
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
         tableView.tableFooterView = UIView()
     }
 
@@ -66,13 +63,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: identifier)
-        if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: identifier)
-        }
-        cell?.selectionStyle = .none
-        cell?.textLabel?.text = dataSource[indexPath.row]
-        return cell!
+        let cell = TodoCell.cell(with: tableView)
+        cell.headerImageView.image = #imageLiteral(resourceName: "icon_small.png")
+        cell.titleLabel.text = dataSource[indexPath.row]
+        return cell
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
