@@ -67,12 +67,11 @@ extension TodayViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: identifier)
-        if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: identifier)
-        }
-        cell?.textLabel?.text = dataSource[indexPath.row]
-        return cell!
+        
+        let cell = TodoCell.cell(with: tableView)
+        cell.headerImageView.image = #imageLiteral(resourceName: "icon_small.png")
+        cell.titleLabel.text = dataSource[indexPath.row]
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
