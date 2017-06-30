@@ -27,13 +27,25 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         tableView.rowHeight = 60
         preferredContentSize = CGSize.zero
         
-        
-        
         // iOS10 添加折叠按钮
         if #available(iOSApplicationExtension 10.0, *) {
             extensionContext?.widgetLargestAvailableDisplayMode = .expanded
         } else {
             // iOS8 、iOS9 上需要自己添加折叠按钮
+        }
+        
+        // 这几个通知没用
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.NSExtensionHostWillEnterForeground, object: self, queue: OperationQueue.main) { (notification) in
+            print("1")
+        }
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.NSExtensionHostDidEnterBackground, object: self, queue: OperationQueue.main) { (notification) in
+            print("2")
+        }
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.NSExtensionHostWillResignActive, object: self, queue: OperationQueue.main) { (notification) in
+            print("3")
+        }
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.NSExtensionHostDidBecomeActive, object: self, queue: OperationQueue.main) { (notification) in
+            print("4")
         }
     }
     
@@ -44,7 +56,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // If there's no update required, use NCUpdateResult.NoData
         // If there's an update, use NCUpdateResult.NewData
         
-        completionHandler(NCUpdateResult.failed)
+        completionHandler(NCUpdateResult.newData)
     }
     
     func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
@@ -55,6 +67,10 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         case .expanded:
             preferredContentSize = CGSize(width: 0.0, height: 60 * CGFloat(dataSource.count))
         }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
 }
