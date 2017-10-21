@@ -1,2 +1,2 @@
 # TodayExtension
-Today extension demo based swift 3.2
+Today extension demo based swift 4.0
