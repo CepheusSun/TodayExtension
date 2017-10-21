@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     
     let disposeBag = DisposeBag()
     fileprivate lazy var dataSource: [String] = {
-        guard let arr = userdefault?.array(forKey: self.userdefaultKey) else {
+        guard let arr = ViewController.userdefault?.array(forKey: self.userdefaultKey) else {
             return []
         }
         return arr as! [String]
@@ -35,7 +35,7 @@ class ViewController: UIViewController {
         let todo = Variable<String?>("")
         alert.addTextField {
             [unowned self, todo] (textField) in
-            textField.rx.text.bind(to: todo).addDisposableTo(self.disposeBag)
+            textField.rx.text.bind(to: todo).disposed(by: self.disposeBag)
         }
         alert.addAction(UIAlertAction(title: "取消", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "确定", style: .default, handler: {
